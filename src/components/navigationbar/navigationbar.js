@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 function NavigationBar() {
   return (
   <div className='h-screen w-1/6 float-left shadow-2xl flex flex-col fixed' style={{backgroundColor: '#2b2b2b'}}>
@@ -8,7 +9,7 @@ function NavigationBar() {
     <div className='h-full flex flex-col'>
       <div className= 'flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
         <img src={require('../../images/analysis-gray.png')} alt='analysis' className='mr-5 w-6'/> 
-        <h5 style={{color:'#c8c8c8'}} className='antialiased hover:text-white'  >Insights</h5>
+       <Link to='/'><h5 style={{color:'#c8c8c8'}} className='antialiased hover:text-white'  >Insights</h5></Link>
       </div>
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
@@ -23,7 +24,7 @@ function NavigationBar() {
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
         <img src={require('../../images/team.png')} alt='analysis' className='mr-5 w-6'/>
-        <h5 className='antialiased' style={{color:'#c8c8c8'}}>Your team</h5>
+        <Link to='/YourTeam'><h5 className='antialiased' style={{color:'#c8c8c8'}}>Your team</h5></Link>
       </div>
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl' >

@@ -2,6 +2,7 @@ import React from 'react'
 function InsightsPercentage() {
     return(
         <div className='flex flex-row flex-wrap justify-between'>
+
             <div className='px-5 rounded bg-white shadow-lg py-10 mb-4' style={{width:'48%'}}>
                 <h3 className='text-lg tracking-wider mb-4'>Daily incidents</h3>
                 <div className='mb-4 flex flex-row justify-between w-9/12'>
@@ -26,7 +27,7 @@ function InsightsPercentage() {
                 </div>
             </div>
 
-            <div className='px-5 rounded bg-white shadow-lg py-10 mb-4' style={{width:'48%'}}>
+            <div className='px-5 rounded bg-white shadow-lg py-10' style={{width:'48%'}}>
                 <h3 className='text-lg tracking-wider mb-4'>Monthly incidents</h3>
                 <div className='mb-4 flex flex-row justify-between w-9/12'>
                     <img className='w-6' src={require('../../../images/arrow-up.png')} alt='arrow down'/>
@@ -38,7 +39,7 @@ function InsightsPercentage() {
                 </div>
             </div>
 
-            <div className='px-5 rounded bg-white shadow-lg py-10 mb-4' style={{width:'48%'}}>
+            <div className='px-5 rounded bg-white shadow-lg py-10' style={{width:'48%'}}>
                 <h3 className='text-lg tracking-wider mb-4'>Average severity</h3>
                 <div className='mb-4 flex flex-row justify-between w-9/12'>
                     <img className='w-6' src={require('../../../images/arrow-down.png')} alt='arrow down'/>
@@ -49,6 +50,7 @@ function InsightsPercentage() {
                     <div className='py-1 rounded bg-orange-400' style={{width: '32%'}}></div>
                 </div>
             </div>
+
         </div>
     )
 }

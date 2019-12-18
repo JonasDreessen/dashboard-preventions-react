@@ -5,14 +5,25 @@ import App from './App';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import YourTeam from './components/dashboard/yourTeam/yourTeam'
 import NavigationBar from './components/navigationbar/navigationbar'
+import Incidents from './components/dashboard/Incidents/Incidents'
 import * as serviceWorker from './serviceWorker';
+import IncidentSettings from './components/dashboard/IncidentSettings/IncidentSettings';
+import HelpAndSupport from './components/dashboard/HelpAndSupport/HelpAndSupport';
+import Settings from './components/dashboard/Settings/Settings';
+import TeamAlerts from './components/dashboard/TeamAlerts/TeamAlerts';
 
 const routing = (
     <Router>
         <div>
             <Route path='/' component={NavigationBar} />
             <Route exact path="/" component={App} />
+            <Route path='/Incidents' component={Incidents} />
+            <Route path='/TeamAlerts' component={TeamAlerts} />
             <Route path="/YourTeam" component={YourTeam} />
+            <Route path='/IncidentSettings' component={IncidentSettings} />
+            <Route path='/HelpAndSupport' component={HelpAndSupport} />
+            <Route path='/Settings' component={Settings} />
+            
         </div>
     </Router>
 )

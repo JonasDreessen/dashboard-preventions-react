@@ -11,7 +11,7 @@ function TeamMembers (){
         })
         .map(user => {
         return(
-            <div className='border w-24 h-24 p-2 m-1 text-center' style={{backgroundColor: '#ececec'}} key={user[0]}>
+            <div className='border w-24 h-24 p-2 m-2 text-center' style={{backgroundColor: '#ececec'}} key={user[0]}>
                 <img className='w-6 ml-auto mr-auto' src={require('../../../images/user.png')} alt='user'/>
                 <div className='flex flex-row items-center justify-center align-center'>
                     <h1 className='tracking-wider font-thin text-xs py-4'>{user[1]} {user[2]}</h1>
@@ -24,9 +24,9 @@ function TeamMembers (){
         <div className='m-h-full'>
         <h1>Team Members</h1>
             <div className='border-b mb-2'>
-                <input placeholder='Search Team Members' onChange={event => setTextInput(event.target.value)}></input>
+                <input placeholder='Search Team Members' onChange={event => setTextInput(event.target.value)} style={{}}></input>
             </div>
-            <div className='flex flex-row flex-wrap overflow-y-auto' style={{maxHeight:300}}>
+            <div className='flex flex-row flex-wrap overflow-y-auto pt-5 px-2 justify-center' style={{maxHeight:400}}>
                 {TeamMember}
             </div>
         </div>

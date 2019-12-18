@@ -14,12 +14,12 @@ function NavigationBar() {
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
         <img src={require('../../images/bullhorn.png')} alt='analysis' className='mr-5 w-6'/> 
-        <h5 className='antialiased' style={{color:'#c8c8c8'}}>Incidents</h5>
+        <Link to='/Incidents'><h5 className='antialiased' style={{color:'#c8c8c8'}}>Incidents</h5></Link>
       </div>
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
         <img src={require('../../images/bell.png')} alt='analysis' className='mr-5 w-6'/>
-        <h5 className='antialiased' style={{color:'#c8c8c8'}}>Team alerts</h5>
+      <Link to='/teamalerts'> <h5 className='antialiased' style={{color:'#c8c8c8'}}>Team alerts</h5></Link>
       </div>
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
@@ -29,17 +29,17 @@ function NavigationBar() {
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
         <img src={require('../../images/customer-support.png')} alt='analysis' className='mr-5 w-6'/>
-        <h5 className='antialiased' style={{color:'#c8c8c8'}}>Incident settings</h5>
+       <Link to='/incidentsettings'> <h5 className='antialiased' style={{color:'#c8c8c8'}}>Incident settings</h5></Link>
       </div>
 
       <div className= 'flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
         <img src={require('../../images/support.png')} alt='analysis' className='mr-5 w-6'/>
-        <h5 className='antialiased' style={{color:'#c8c8c8'}}>Help & support</h5>
+       <Link to='/HelpAndSupport'> <h5 className='antialiased' style={{color:'#c8c8c8'}}>Help & support</h5></Link>
       </div>
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl' >
         <img src={require('../../images/settings1.png')} alt='analysis' className='mr-5 w-6'/>
-        <h5 className='antialiased' style={{color:'#c8c8c8'}}>Settings</h5>
+        <Link to='/settings'><h5 className='antialiased' style={{color:'#c8c8c8'}}>Settings</h5></Link>
       </div>
 
       <div className='flex flex-row p-4 hover:bg-black hover:shadow-2xl'>

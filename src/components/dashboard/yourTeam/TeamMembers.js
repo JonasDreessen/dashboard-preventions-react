@@ -4,7 +4,6 @@ import teamMemberData from '../../../assets/teamMembers/teamMembers.json'
 function TeamMembers (){
     const [textInput, setTextInput] = useState('')
     // mapping over all the teamMebers and putting each of them is separte div's
-    console.log(textInput)
     const TeamMember = teamMemberData.data
         .filter(user => {
             return user[1].toLowerCase().indexOf(textInput.toLowerCase()) >= 0 || user[2].toLowerCase().indexOf(textInput.toLowerCase()) >= 0

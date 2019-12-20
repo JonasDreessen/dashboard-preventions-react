@@ -36,7 +36,7 @@ function Insights() {
 
         <div className='px-5 pt-4 mt-10 bg-white rounded shadow-lg' style={{width: '48%'}}>
             <div>
-              <h3 className='text-lg tracking-wider mb-4'>Monthly visitors</h3>
+              <h3 className='text-lg tracking-wider mb-4'>Visitors</h3>
               <div className='ml-auto mr-auto'>
                 <InsightsVisitors />
               </div>

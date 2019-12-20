@@ -48,19 +48,17 @@ function Incidents(){
           <div className='w-10/12 fixed z-50'>
             <DashboardHeader />
           </div>
-          <div className='px-8 py-10 flex flex-wrap justify-between overflow-auto mt-6'>
-            <div className='px-5 pt-4 mt-10 bg-white rounded shadow-lg overflow-y-scroll fixed' style={{width:'78.5%'}}>
-              <div className=''>
-                  <ul className='flex flex-row list-none border-b-2 mb-4 bg-white'>
-                    <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>first name</li>
-                    <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>last name</li>
-                    <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>incident location</li>
-                    <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>date</li>
-                    <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>type</li>
-                    <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>severity</li>
-                  </ul>
-                  {incidents}
-                </div>
+          <div className='px-8 py-10 flex flex-wrap justify-between mt-6'>
+            <div className='px-5 pb-2 mt-10 bg-white rounded shadow-lg overflow-hidden overflow-y-auto h-screen' style={{width: '100%'}}>
+                <ul className='flex flex-row list-none border-b-2 mb-4 py-2 bg-white sticky top-0 overflow-y-auto'>
+                  <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>first name</li>
+                  <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>last name</li>
+                  <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>incident location</li>
+                  <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>date</li>
+                  <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>type</li>
+                  <li className='text-gray-700 font-light tracking-wider' style={{width: '16.666%'}}>severity</li>
+                </ul>
+                {incidents}
             </div>
         </div>
       </div>

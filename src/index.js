@@ -10,24 +10,35 @@ import * as serviceWorker from './serviceWorker';
 import IncidentSettings from './components/dashboard/IncidentSettings/IncidentSettings';
 import HelpAndSupport from './components/dashboard/HelpAndSupport/HelpAndSupport';
 import Settings from './components/dashboard/Settings/Settings';
-import TeamAlerts from './components/dashboard/TeamAlerts/TeamAlerts';
+import Invoices from './components/dashboard/Invoices/Invoices'
+import InvoiceDetails from './components/dashboard/Invoices/InvoiceDetails'
+import { createStore } from 'redux'
+import rootReducer from './redux/reducers/index'
+import {Provider} from 'react-redux'
 
+// -- STORE -- // 
+const store = createStore(rootReducer) 
 const routing = (
     <Router>
         <div>
             <Route path='/' component={NavigationBar} />
             <Route exact path="/" component={App} />
             <Route path='/Incidents' component={Incidents} />
-            <Route path='/TeamAlerts' component={TeamAlerts} />
+            <Route path='/Invoices' component={Invoices} /> 
             <Route path="/YourTeam" component={YourTeam} />
             <Route path='/IncidentSettings' component={IncidentSettings} />
             <Route path='/HelpAndSupport' component={HelpAndSupport} />
             <Route path='/Settings' component={Settings} />
+            <Route path='/InvoiceDetails' component={InvoiceDetails} />
             
         </div>
     </Router>
 )
-ReactDOM.render(routing, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        {routing}
+    </Provider>,
+    document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

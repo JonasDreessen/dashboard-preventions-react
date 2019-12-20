@@ -1,5 +1,6 @@
 import React from 'react'
 import DashboardHeader from '../dashboardHeader/dashboardHeader'
+import { Link } from 'react-router-dom'
 function InvoiceDetails(){
     return(
         <div className='w-10/12 bg-gray-300 float-right min-h-screen'>
@@ -9,6 +10,22 @@ function InvoiceDetails(){
           <div className='px-8 py-10 flex flex-wrap justify-between overflow-auto  mt-6'>
 
           {/* Below is the template for the invoice */}
+          <div className='px-5 pt-4 mt-10' style={{width: '100%'}}>
+            <div className='float-right w-5/12 flex flex-row justify-between'>
+                <div className="flex flex-row items-center hover:bg-blue-300 p-1 px-2 rounded-lg cursor-pointer">
+                    <img className='w-4 h-4 mr-2' src={require('../../../images/go-back.png')} alt='go back'/>
+                    <Link to='/Invoices'><h3 className='text-blue-700 text-sm tracking-wider'>GO TO INVOICES</h3></Link>
+                </div>
+                <div className="flex flex-row items-center hover:bg-red-300 p-1 px-2 rounded-lg cursor-pointer">
+                    <img className='w-4 h-4 mr-2' src={require('../../../images/pencil-edit-button.png')} alt='eddit button'/>
+                    <h3 className='text-red-700 text-sm tracking-wider'>EDIT INVOICES</h3>
+                </div>
+                <div className="flex flex-row items-center bg-blue-600 p-1 px-2 rounded-lg cursor-pointer">
+                    <img className='w-4 h-4 mr-2' src={require('../../../images/printing-tool.png')} alt='go back'/>
+                    <h3 className='text-white font-semibold text-sm tracking-wider' onClick={window.print}>PRINT INVOICE</h3>
+                </div>
+            </div>
+          </div>
             <div className='px-5 pt-4 mt-10 bg-white rounded shadow-lg' style={{width: '100%'}}>
                 <div className='flex flex-row justify-between border-b-2 border-dashed py-5'>
                     <div>
@@ -17,7 +34,7 @@ function InvoiceDetails(){
                     </div>
                     <div>
                         <p ><span className='py-2 font-semibold tracking-wider text-sm'>Order status:</span> <span className='py-2 tracking-wider text-sm text-gray-600'>on hold</span></p>
-                        <p><span className='py-2 font-semibold tracking-wider text-sm'>Order Date:</span> <span className='py-2 tracking-wider text-sm text-gray-600'>February 17t 2018</span></p>
+                        <p><span className='py-2 font-semibold tracking-wider text-sm'>Order Date:</span> <span className='py-2 tracking-wider text-sm text-gray-600'>February 17th 2018</span></p>
                     </div>
                 </div>
                 <div className='flex flex-row justify-between py-5'>

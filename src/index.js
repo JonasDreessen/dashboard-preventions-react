@@ -12,9 +12,11 @@ import HelpAndSupport from './components/dashboard/HelpAndSupport/HelpAndSupport
 import Settings from './components/dashboard/Settings/Settings';
 import Invoices from './components/dashboard/Invoices/Invoices'
 import InvoiceDetails from './components/dashboard/Invoices/InvoiceDetails'
+import EmptyInvoice from './components/dashboard/Invoices/emptyInvoice'
 import { createStore } from 'redux'
 import rootReducer from './redux/reducers/index'
 import {Provider} from 'react-redux'
+
 
 // -- STORE -- // 
 const store = createStore(rootReducer) 
@@ -30,7 +32,7 @@ const routing = (
             <Route path='/HelpAndSupport' component={HelpAndSupport} />
             <Route path='/Settings' component={Settings} />
             <Route path='/InvoiceDetails' component={InvoiceDetails} />
-            
+            <Route path='/newInvoice' component={EmptyInvoice} />
         </div>
     </Router>
 )

@@ -9,7 +9,7 @@ function Invoices(){
           </div>
           <div className='px-8 py-10 flex flex-wrap justify-between overflow-auto mt-6'>
             <div className='px-5 pt-4 mt-10 bg-white rounded shadow-xl' style={{width: '100%'}}>
-              <div className='pb-2 border-b'>
+              <div className='pb-2 mb-6'>
                 <p className='text-2xl font-light tracking-wider'>Invoices</p>
               </div>
               <div className='mx-2 w-full'>
@@ -26,7 +26,7 @@ function Invoices(){
               </div>
 
               <div className='mx-2 w-full'>
-                <ul className='flex flex-row border-b py-2 align-center'>
+                <ul className='flex flex-row border-b py-3 align-center'>
                   <li style={{width:'14.28%'}} className='text-sm'>
                     <input type='checkbox' value='all'></input>
                   </li>
@@ -45,7 +45,7 @@ function Invoices(){
               </div>
 
               <div className='mx-2 w-full'>
-                <ul className='flex flex-row border-b py-2 align-center'>
+                <ul className='flex flex-row border-b py-3 align-center'>
                   <li style={{width:'14.28%'}} className='text-sm'>
                     <input type='checkbox' value='all'></input>
                   </li>
@@ -64,7 +64,7 @@ function Invoices(){
               </div>
 
               <div className='mx-2 w-full'>
-                <ul className='flex flex-row border-b py-2 align-center'>
+                <ul className='flex flex-row border-b py-3 align-center'>
                   <li style={{width:'14.28%'}} className='text-sm'>
                     <input type='checkbox' value='all'></input>
                   </li>
@@ -83,7 +83,7 @@ function Invoices(){
               </div>
 
               <div className='mx-2 w-full'>
-                <ul className='flex flex-row border-b py-2 align-center'>
+                <ul className='flex flex-row border-b py-3 align-center'>
                   <li style={{width:'14.28%'}} className='text-sm'>
                     <input type='checkbox' value='all'></input>
                   </li>

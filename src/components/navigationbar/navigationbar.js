@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {InsightFocus, IncidentFocus, TeamAlertFocus, YourTeamFocus, IncidentSettingsFocus, HelpAndSupportFocus, SettingsFocus} from '../../redux/actions/navigationFocus'
+import {InsightFocus, IncidentFocus, TeamAlertFocus, YourTeamFocus, IncidentSettingsFocus, HelpAndSupportFocus, SettingsFocus} from '../../redux/navigationFocus/navigationFocus'
  
 function NavigationBar() {
   let focusState = useSelector(state => state.navigationFocusser)

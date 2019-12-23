@@ -1,10 +1,8 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-import {increment} from '../../../redux/actions/counter'
-import {decrement} from '../../../redux/actions/counter'
+import {useDispatch} from 'react-redux'
+import {increment, decrement} from '../../../redux/counter/counter'
 
 function DashboardHeader() {
-  const counter = useSelector(state => state.counterReducer)
   const dispatch = useDispatch()
   return (
   <div className='flex w-full px-10 py-5 flex-row-reverse' style={{backgroundColor: '#3949ab'}}>

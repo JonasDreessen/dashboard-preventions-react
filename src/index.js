@@ -14,7 +14,7 @@ import Invoices from './components/dashboard/Invoices/Invoices'
 import InvoiceDetails from './components/dashboard/Invoices/InvoiceDetails'
 import EmptyInvoice from './components/dashboard/Invoices/emptyInvoice'
 import { createStore } from 'redux'
-import rootReducer from './redux/reducers/index'
+import rootReducer from './redux/index'
 import {Provider} from 'react-redux'
 
 

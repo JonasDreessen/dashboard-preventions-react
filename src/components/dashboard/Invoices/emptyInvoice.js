@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import DashboardHeader from '../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
-
+import {useDispatch} from 'react-redux'
+import {addNewInvoice} from '../../../redux/invoices/invoices'
 function EmptyInvoice() {
+    // connecting the global redux state to the EmptyInvoice component
+    const dispatch = useDispatch()
     // setting local state
     const [companyDetails, setCompanyDetails] = useState([
         {
+            invoiceID: '',
             orderStatus:'' ,
             orderDate: '' ,
             billFrom: {
@@ -25,6 +29,7 @@ function EmptyInvoice() {
     const [uniqueID, setuniqueID] = useState(1)
     const [invoiceRows, setInvoiceRows] = useState([0])
     const [invoiceDetails, setInvoiceDetails] = useState([])
+    let payload = {invoiceDetails: invoiceDetails, companyDetails: companyDetails}
     
     // function to ensure that every row is a unique number
     function customNumberGenerator(){
@@ -82,6 +87,11 @@ function EmptyInvoice() {
         }
     })
     // bill coming from
+    function invoiceIDChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].invoiceID = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
     function orderStatusChanger(event){
         const companySlicedArray = companyDetails.slice()
         companySlicedArray[0].orderStatus = event.target.value
@@ -164,7 +174,7 @@ function EmptyInvoice() {
                 </div>
                 <div className="flex flex-row items-center bg-blue-600 p-1 px-2 rounded-lg cursor-pointer">
                     <img className='w-4 h-4 mr-2' src={require('../../../images/printing-tool.png')} alt='go back'/>
-                    <h3 className='text-white font-semibold text-sm tracking-wider' onClick={window.print}>PRINT INVOICE</h3>
+                   <Link to='/invoices'> <h3 className='text-white font-semibold text-sm tracking-wider' onClick={() => dispatch(addNewInvoice(payload))}>ADD INVOICE TO LIST (FINAL!)</h3> </Link>
                 </div>
             </div>
           </div>
@@ -172,7 +182,7 @@ function EmptyInvoice() {
                 <div className='flex flex-row justify-between border-b-2 border-dashed py-5'>
                     <div>
                         <p className='py-2 text-gray-600 font-semibold tracking-wider'>Create new invoice</p>
-                        <p className='py-2 text-blue-600 font-light tracking-wider'>#56131635156</p>
+                        <input onChange={event => invoiceIDChanger(event)} type='tel' placeholder='#newID' maxLength='18' className='py-2 text-blue-600 font-light tracking-wider outline-none appearance-none'></input>
                     </div>
                     <div>
                         <div className='flex flex-row items-center'>
@@ -199,7 +209,7 @@ function EmptyInvoice() {
                             <input onChange={event => orderBillFromCompanyStreetnameChanger(event)} placeholder='streetname and number' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                             <input onChange={event => orderBillFromCompanyCityChanger(event)} placeholder='city and zip code' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                         </div>
-                        <input onChange={event => orderBillFromCompanyPhoneChanger(event)} type='tel' pattern="[0-9]{4} [0-9]{3} [0-9]{4}" maxlength="13" placeholder='0032 400 00 000' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                        <input onChange={event => orderBillFromCompanyPhoneChanger(event)} type='tel' pattern="[0-9]{4} [0-9]{3} [0-9]{4}" maxLength="13" placeholder='0032 400 00 000' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                     </div>
 
                     <div className='flex flex-col justify-around'>
@@ -212,7 +222,7 @@ function EmptyInvoice() {
                         <input onChange={event => orderBillToCompanyStreetnameChanger(event)} placeholder='streetname and number' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                             <input onChange={event => orderBillToCompanyCityChanger(event)} placeholder='city and zip code' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                         </div>
-                        <input onChange={event => orderBillToCompanyPhoneChanger(event)} type='tel' pattern="[0-9]{4} [0-9]{3} [0-9]{4}" maxlength="13" placeholder='0032 400 00 000' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                        <input onChange={event => orderBillToCompanyPhoneChanger(event)} type='tel' pattern="[0-9]{4} [0-9]{3} [0-9]{4}" maxLength="13" placeholder='0032 400 00 000' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                     </div>
                 </div>
                 <div className='flex flex-row justify-between py-5 bg-gray-300 pl-6 border-b'>
@@ -224,7 +234,8 @@ function EmptyInvoice() {
                 </div>
                 {allInvoiceRows}
                 <div 
-                className='inline-block bg-blue-600 p-1 mt-2 rounded' onClick={() => {customNumberGenerator(); setInvoiceDetails([...invoiceDetails, {id:uniqueID, name: '', unitCost: 0, units: 0, price: 0}])}} >
+                    className='inline-block bg-blue-600 p-1 mt-2 rounded'  
+                    onClick={() => {customNumberGenerator(); setInvoiceDetails([...invoiceDetails, {id:uniqueID, name: '', unitCost: 0, units: 0, price: 0}])}} >
                    <p className='font-bold text-xs tracking-wider text-white'>ADD ITEM</p>
                 </div>
                 <div>

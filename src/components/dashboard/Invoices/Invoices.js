@@ -1,7 +1,12 @@
 import React from 'react'
 import DashboardHeader from '../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
+import {useSelector} from 'react-redux'
 function Invoices(){
+  // connecting the global redux state to the EmptyInvoice component
+  const invoices = useSelector(state => state.invoiceAdder)
+  console.log(invoices, 'invoices jwz')
+  // const dispatch = useDispatch()
     return(
         <div className='w-10/12 bg-gray-300 float-right min-h-screen'>
           <div className='w-10/12 fixed z-50'>
@@ -101,7 +106,7 @@ function Invoices(){
                 </ul>
               </div>
             </div>
-            <img className='w-12 ml-auto mr-16 hover:shadow-2xl rounded-full' style={{marginTop: -10}}  src={require('../../../images/invoice-plus.png')} alt='add invoice'/>
+           <Link className='ml-auto' to='/newinvoice'><img className='w-12 mr-16 hover:shadow-2xl rounded-full' style={{marginTop: -10}}  src={require('../../../images/invoice-plus.png')} alt='add invoice'/></Link>
           </div>
         </div>
     )

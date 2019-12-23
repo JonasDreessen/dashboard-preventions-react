@@ -3,7 +3,25 @@ import DashboardHeader from '../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
 
 function EmptyInvoice() {
-    // setting local state 
+    // setting local state
+    const [companyDetails, setCompanyDetails] = useState([
+        {
+            orderStatus:'' ,
+            orderDate: '' ,
+            billFrom: {
+                name: '', 
+                email: '', 
+                streetName: '', 
+                city: '', 
+                phoneNumber: 0
+            }, 
+            billTo:{
+                name: '', 
+                email: '', 
+                streetName: '', 
+                city: '', 
+                phoneNumber: 0}
+            }]) 
     const [uniqueID, setuniqueID] = useState(1)
     const [invoiceRows, setInvoiceRows] = useState([0])
     const [invoiceDetails, setInvoiceDetails] = useState([])
@@ -13,10 +31,12 @@ function EmptyInvoice() {
         setuniqueID(uniqueID + 1)
         setInvoiceRows([...invoiceRows,uniqueID])
     }
+    // creating the sub total without VAT that changes dynamically 
     let subTotal = 0
+    if(invoiceDetails.length > 0){
         invoiceDetails.forEach(element => {
             subTotal += element.price
-        });
+        })};
     
     // create new invoice section for every new id created
     const allInvoiceRows = invoiceRows.map(row => {
@@ -61,6 +81,69 @@ function EmptyInvoice() {
             )
         }
     })
+    // bill coming from
+    function orderStatusChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].orderStatus = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderDateChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].orderDate = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillFromCompanyNameChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billFrom.name = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillFromCompanyEmailChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billFrom.email = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillFromCompanyStreetnameChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billFrom.streetName = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillFromCompanyCityChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billFrom.city = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillFromCompanyPhoneChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billFrom.phone = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    // to company
+    function orderBillToCompanyNameChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billTo.name = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillToCompanyEmailChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billTo.email = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillToCompanyStreetnameChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billTo.streetName = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillToCompanyCityChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billTo.city = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    function orderBillToCompanyPhoneChanger(event){
+        const companySlicedArray = companyDetails.slice()
+        companySlicedArray[0].billTo.phone = event.target.value
+        setCompanyDetails(companySlicedArray)
+    }
+    console.log(companyDetails)
     return(
         <div className='w-10/12 bg-gray-300 float-right min-h-screen'>
           <div className='w-10/12 fixed z-50'>
@@ -95,13 +178,13 @@ function EmptyInvoice() {
                         <div className='flex flex-row items-center'>
                             <p>
                                 <span className='py-2 font-semibold tracking-wider text-sm mr-2'>Order status:</span></p> 
-                                <input type='text' placeholder='enter status' className='py-2 tracking-wider text-sm text-gray-600 outline-none'></input>
+                                <input onChange={event => orderStatusChanger(event)} type='text' placeholder='enter status' className='py-2 tracking-wider text-sm text-gray-600 outline-none'></input>
                         </div>
                         <div className='flex flex-row items-center'>
                         <p>
                             <span className='py-2 font-semibold tracking-wider text-sm mr-2'>Order Date:</span>
                         </p> 
-                            <input type='text' placeholder='enter date' className='py-2 tracking-wider text-sm text-gray-600 outline-none'></input>
+                            <input onChange={event => orderDateChanger(event)} type='date' placeholder='enter date' className='py-2 tracking-wider text-sm text-gray-600 outline-none'></input>
                         </div>
                     </div>
                 </div>
@@ -109,27 +192,27 @@ function EmptyInvoice() {
                     <div className='flex flex-col justify-around'>
                         <h1 className='font-semibold tracking-wider'>Bill from</h1>
                         <div className='my-5 flex flex-col'>
-                            <input type='text' placeholder='company name' className='text-gray-700 tracking-wider text-sm font-semibold outline-none'></input>
-                            <input placeholder='email' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                            <input onChange={event => orderBillFromCompanyNameChanger(event)} type='text' placeholder='company name' className='text-gray-700 tracking-wider text-sm font-semibold outline-none'></input>
+                            <input onChange={event => orderBillFromCompanyEmailChanger(event)} placeholder='email' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                         </div>
                         <div className='my-5 flex flex-col'>
-                            <input placeholder='streetname and number' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
-                            <input placeholder='city and zip code' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                            <input onChange={event => orderBillFromCompanyStreetnameChanger(event)} placeholder='streetname and number' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                            <input onChange={event => orderBillFromCompanyCityChanger(event)} placeholder='city and zip code' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                         </div>
-                        <input placeholder='phone number' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                        <input onChange={event => orderBillFromCompanyPhoneChanger(event)} type='tel' pattern="[0-9]{4} [0-9]{3} [0-9]{4}" maxlength="13" placeholder='0032 400 00 000' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                     </div>
 
                     <div className='flex flex-col justify-around'>
                         <h1 className='font-semibold tracking-widest'>Bill to</h1>
                         <div className='my-5 flex flex-col'>
-                            <input type='text' placeholder='company name' className='text-gray-700 tracking-wider text-sm font-semibold outline-none'></input>
-                            <input placeholder='email' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                        <input onChange={event => orderBillToCompanyNameChanger(event)} type='text' placeholder='company name' className='text-gray-700 tracking-wider text-sm font-semibold outline-none'></input>
+                            <input onChange={event => orderBillToCompanyEmailChanger(event)} placeholder='email' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                         </div>
                         <div className='my-5 flex flex-col'>
-                            <input placeholder='streetname and number' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
-                            <input placeholder='city and zip code' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                        <input onChange={event => orderBillToCompanyStreetnameChanger(event)} placeholder='streetname and number' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                            <input onChange={event => orderBillToCompanyCityChanger(event)} placeholder='city and zip code' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                         </div>
-                        <input placeholder='phone number' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
+                        <input onChange={event => orderBillToCompanyPhoneChanger(event)} type='tel' pattern="[0-9]{4} [0-9]{3} [0-9]{4}" maxlength="13" placeholder='0032 400 00 000' className='text-gray-700 font-thin text-sm tracking-widest outline-none'></input>
                     </div>
                 </div>
                 <div className='flex flex-row justify-between py-5 bg-gray-300 pl-6 border-b'>
@@ -140,6 +223,10 @@ function EmptyInvoice() {
                     <div style={{width:'20%'}} className='text-sm tracking-wider'>Price</div>
                 </div>
                 {allInvoiceRows}
+                <div 
+                className='inline-block bg-blue-600 p-1 mt-2 rounded' onClick={() => {customNumberGenerator(); setInvoiceDetails([...invoiceDetails, {id:uniqueID, name: '', unitCost: 0, units: 0, price: 0}])}} >
+                   <p className='font-bold text-xs tracking-wider text-white'>ADD ITEM</p>
+                </div>
                 <div>
                     <div className='float-right w-1/5 mt-10'>
                         <div className='flex flex-row justify-between'>
@@ -156,10 +243,7 @@ function EmptyInvoice() {
                         </div>
                     </div>
                 </div>
-                <div className='float-right' onClick={() => {customNumberGenerator(); setInvoiceDetails([...invoiceDetails, {id:uniqueID, name: '', unitCost: 0, units: 0, price: 0}])}} >
-                    add item
-                    {invoiceRows.length}
-                </div>
+                
             </div>
           </div>
         

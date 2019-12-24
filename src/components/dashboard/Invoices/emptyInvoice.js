@@ -153,7 +153,6 @@ function EmptyInvoice() {
         companySlicedArray[0].billTo.phone = event.target.value
         setCompanyDetails(companySlicedArray)
     }
-    console.log(companyDetails)
     return(
         <div className='w-10/12 bg-gray-300 float-right min-h-screen'>
           <div className='w-10/12 fixed z-50'>

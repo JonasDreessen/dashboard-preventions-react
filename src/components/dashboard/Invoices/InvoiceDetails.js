@@ -1,7 +1,43 @@
 import React from 'react'
 import DashboardHeader from '../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
-function InvoiceDetails(){
+function InvoiceDetails(props){
+    let invoiceInfo = props.location.state
+    console.log(invoiceInfo)
+    // general invoice info
+    const InvoiceID = invoiceInfo.InvoiceID
+    const orderStatus = invoiceInfo.orderStatus
+    const orderDate = invoiceInfo.orderDate
+    // bill from
+    const BillFromName = invoiceInfo.BillFromName
+    const BillFromEmail = invoiceInfo.BillFromEmail
+    const BillFromStreetName = invoiceInfo.BillFromStreetName
+    const BillFromCity = invoiceInfo.BillFromCity
+    const BillFromPhone = invoiceInfo.BillFromPhone
+    // bill to 
+    const BillToName = invoiceInfo.BillToName
+    const BillToEmail = invoiceInfo.BillToEmail
+    const BillToStreetName = invoiceInfo.BillToStreetName
+    const BillToCity = invoiceInfo.BillToCity
+    const BillToPhone = invoiceInfo.BillToPhone
+
+    // invoice details
+    const invoiceBuildingblocks = invoiceInfo.InvoiceDetails.map(detail => {
+        return(
+        <div className='flex flex-row justify-between py-3 pl-6 border-b border-gray-500' key={detail.id}>
+        <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>{detail.id}</div>
+        <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>{detail.name}</div>
+        <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>{detail.unitCost}</div>
+        <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>{detail.units}</div>
+        <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>{detail.price}</div>
+    </div>
+        )
+    })
+    let subTotal = 0
+    if(invoiceInfo.InvoiceDetails.length > 0){
+        invoiceInfo.InvoiceDetails.forEach(element => {
+            subTotal += element.price
+        })};
     return(
         <div className='w-10/12 bg-gray-300 float-right min-h-screen'>
           <div className='w-10/12 fixed z-50'>
@@ -30,38 +66,38 @@ function InvoiceDetails(){
                 <div className='flex flex-row justify-between border-b-2 border-dashed py-5'>
                     <div>
                         <p className='py-2 text-gray-600 font-semibold tracking-wider'>Invoice Info</p>
-                        <p className='py-2 text-blue-600 font-light tracking-wider'>#1234</p>
+                        <p className='py-2 text-blue-600 font-light tracking-wider'>#{InvoiceID}</p>
                     </div>
                     <div>
-                        <p ><span className='py-2 font-semibold tracking-wider text-sm'>Order status:</span> <span className='py-2 tracking-wider text-sm text-gray-600'>on hold</span></p>
-                        <p><span className='py-2 font-semibold tracking-wider text-sm'>Order Date:</span> <span className='py-2 tracking-wider text-sm text-gray-600'>February 17th 2018</span></p>
+                        <p ><span className='py-2 font-semibold tracking-wider text-sm'>Order status:</span> <span className='py-2 tracking-wider text-sm text-gray-600'>{orderStatus}</span></p>
+                        <p><span className='py-2 font-semibold tracking-wider text-sm'>Order Date:</span> <span className='py-2 tracking-wider text-sm text-gray-600'>{orderDate}</span></p>
                     </div>
                 </div>
                 <div className='flex flex-row justify-between py-5'>
                     <div className='flex flex-col justify-around'>
                         <h1 className='font-semibold tracking-wider'>Bill from</h1>
                         <div className='my-5'>
-                            <h3 className='text-gray-700 tracking-wider text-sm font-semibold'>Pointbreak</h3>
-                            <p className='text-gray-700 font-thin text-sm tracking-widest'>JohnDoe@pointbreak.co</p>
+                            <h3 className='text-gray-700 tracking-wider text-sm font-semibold'>{BillFromName}</h3>
+                            <p className='text-gray-700 font-thin text-sm tracking-widest'>{BillFromEmail}</p>
                         </div>
                         <div className='my-5'>
-                            <p className='text-gray-700 font-thin text-sm tracking-widest'>Theodoor rooswijkplaats 4</p>
-                            <p className='text-gray-700 font-thin text-sm tracking-widest'>Antwerpen 2000</p>
+                            <p className='text-gray-700 font-thin text-sm tracking-widest'>{BillFromStreetName}</p>
+                            <p className='text-gray-700 font-thin text-sm tracking-widest'>{BillFromCity}</p>
                         </div>
-                        <p className='text-gray-700 font-thin text-sm tracking-widest'>+32 49 37 066 12</p>
+                        <p className='text-gray-700 font-thin text-sm tracking-widest'>{BillFromPhone}</p>
                     </div>
 
                     <div className='flex flex-col justify-around'>
                         <h1 className='font-semibold tracking-widest'>Bill to</h1>
                         <div className='my-5'>
-                            <h3 className='text-gray-700 tracking-widest text-sm font-semibold'>Coca Cola Company</h3>
-                            <p className='text-gray-700 font-thin text-sm tracking-widest'>Coca@Cola.com</p>
+                            <h3 className='text-gray-700 tracking-widest text-sm font-semibold'>{BillToName}</h3>
+                            <p className='text-gray-700 font-thin text-sm tracking-widest'>{BillToEmail}</p>
                         </div>
                         <div className='my-5'>
-                            <p className='text-gray-700 font-thin text-sm tracking-widest'>CokeRoad 22</p>
-                            <p className='text-gray-700 font-thin text-sm tracking-widest'>Soscity 2212</p>
+                            <p className='text-gray-700 font-thin text-sm tracking-widest'>{BillToStreetName}</p>
+                            <p className='text-gray-700 font-thin text-sm tracking-widest'>{BillToCity}</p>
                         </div>
-                        <p className='text-gray-700 font-thin text-sm tracking-widest'>+32 49 37 066 12</p>
+                        <p className='text-gray-700 font-thin text-sm tracking-widest'>{BillToPhone}</p>
                     </div>
                 </div>
                 <div className='flex flex-row justify-between py-5 bg-gray-300 pl-6 border-b'>
@@ -71,40 +107,20 @@ function InvoiceDetails(){
                     <div style={{width:'20%'}} className='text-sm tracking-wider'>Unit</div>
                     <div style={{width:'20%'}} className='text-sm tracking-wider'>Price</div>
                 </div>
-                <div className='flex flex-row justify-between py-3 pl-6 border-b border-gray-500'>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>1</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>Development</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>60</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>20</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>1200</div>
-                </div>
-                <div className='flex flex-row justify-between py-3 pl-6 border-b border-gray-500'>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>2</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>Design</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>40</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>25</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>1000</div>
-                </div>
-                <div className='flex flex-row justify-between py-3 pl-6 border-b border-gray-500'>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>3</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>Deployment</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>50</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>7</div>
-                    <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>350</div>
-                </div>
+                {invoiceBuildingblocks}
                 <div>
                     <div className='float-right w-1/5 mt-10'>
                         <div className='flex flex-row justify-between'>
                             <h3 className='text-gray-600 text-sm tracking-wider py-2'>Sub-total:</h3>
-                            <h3 className='text-gray-600 text-sm tracking-wider py-2 mr-3'>$2550</h3>
+                            <h3 className='text-gray-600 text-sm tracking-wider py-2 mr-3'>${subTotal}</h3>
                         </div>
                         <div className='flex flex-row justify-between'>
                             <h3 className='text-gray-600 text-sm tracking-wider py-2'>VAT:</h3>
-                            <h3 className='text-gray-600 text-sm tracking-wider py-2 mr-3'>$535,5</h3>
+                            <h3 className='text-gray-600 text-sm tracking-wider py-2 mr-3'>${subTotal * 0.21}</h3>
                         </div>
                         <div className='flex flex-row justify-between mt-5'>
                             <h2 className='text-lg font-semibold tracking-wider py-2'>Grand Total:</h2>
-                            <h2 className='text-lg font-semibold tracking-wider py-2'>$3080,5</h2>
+                            <h2 className='text-lg font-semibold tracking-wider py-2'>${subTotal * 1.21}</h2>
                         </div>
                     </div>
                 </div>

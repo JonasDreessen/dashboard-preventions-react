@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DashboardHeader from '../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
 import {addNewInvoice} from '../../../redux/invoices/invoices'
+import {increment} from '../../../redux/InvoiceIdCreator/InvoiceIdCreator'
+import Select from "react-dropdown-select"
+
 function EmptyInvoice() {
+
     // connecting the global redux state to the EmptyInvoice component
+    const invoiceID = useSelector(state => state.InvoiceIdCreator)
     const dispatch = useDispatch()
     // setting local state
     const [companyDetails, setCompanyDetails] = useState([
@@ -81,7 +86,7 @@ function EmptyInvoice() {
                 placeholder='0' 
                 className='text-sm tracking-wider text-gray-600 outline-none pr-5'>
                 </input>
-                <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>{invoiceDetails[pos].price}</div>
+                <div style={{width:'20%'}} className='text-sm tracking-wider text-gray-600'>{(invoiceDetails[pos].price).toFixed(2)}</div>
             </div>
             )
         }
@@ -92,9 +97,9 @@ function EmptyInvoice() {
         companySlicedArray[0].invoiceID = event.target.value
         setCompanyDetails(companySlicedArray)
     }
-    function orderStatusChanger(event){
+    function orderStatusChanger(value){
         const companySlicedArray = companyDetails.slice()
-        companySlicedArray[0].orderStatus = event.target.value
+        companySlicedArray[0].orderStatus = value[0].value
         setCompanyDetails(companySlicedArray)
     }
     function orderDateChanger(event){
@@ -153,6 +158,12 @@ function EmptyInvoice() {
         companySlicedArray[0].billTo.phone = event.target.value
         setCompanyDetails(companySlicedArray)
     }
+
+    const status = [
+        {label: 'not sended', value: 'not send'},
+        {label: 'pending', value: 'pending'},
+        {label: 'paid', value: 'paid'}
+    ]
     return(
         <div className='w-10/12 bg-gray-300 float-right min-h-screen'>
           <div className='w-10/12 fixed z-50'>
@@ -181,13 +192,15 @@ function EmptyInvoice() {
                 <div className='flex flex-row justify-between border-b-2 border-dashed py-5'>
                     <div>
                         <p className='py-2 text-gray-600 font-semibold tracking-wider'>Create new invoice</p>
-                        <input onChange={event => invoiceIDChanger(event)} type='tel' placeholder='#newID' maxLength='18' className='py-2 text-blue-600 font-light tracking-wider outline-none appearance-none'></input>
+                        <p className='py-2 text-blue-600 font-light tracking-wider outline-none appearance-none'>{invoiceID}</p>
+                        {/* <input onChange={event => invoiceIDChanger(event)} type='tel' placeholder='#newID' maxLength='18' className='py-2 text-blue-600 font-light tracking-wider outline-none appearance-none'></input> */}
                     </div>
                     <div>
                         <div className='flex flex-row items-center'>
                             <p>
-                                <span className='py-2 font-semibold tracking-wider text-sm mr-2'>Order status:</span></p> 
-                                <input onChange={event => orderStatusChanger(event)} type='text' placeholder='enter status' className='py-2 tracking-wider text-sm text-gray-600 outline-none'></input>
+                                <span className='py-2 font-semibold tracking-wider text-sm mr-2'>Order status:</span></p>
+                                <Select placeholder='select' options={status} onChange={(values) => orderStatusChanger(values) }/>
+                                {/* <input onChange={event => orderStatusChanger(event)} type='text' placeholder='enter status' className='py-2 tracking-wider text-sm text-gray-600 outline-none'></input> */}
                         </div>
                         <div className='flex flex-row items-center'>
                         <p>
@@ -241,15 +254,15 @@ function EmptyInvoice() {
                     <div className='float-right w-1/5 mt-10'>
                         <div className='flex flex-row justify-between'>
                             <h3 className='text-gray-600 text-sm tracking-wider py-2'>Sub-total:</h3>
-                            <h3 className='text-gray-600 text-sm tracking-wider py-2 mr-3'>${subTotal}</h3>
+                            <h3 className='text-gray-600 text-sm tracking-wider py-2 mr-3'>${(subTotal).toFixed(2)}</h3>
                         </div>
                         <div className='flex flex-row justify-between'>
                             <h3 className='text-gray-600 text-sm tracking-wider py-2'>VAT:</h3>
-                            <h3 className='text-gray-600 text-sm tracking-wider py-2 mr-3'>${subTotal * 0.21}</h3>
+                            <h3 className='text-gray-600 text-sm tracking-wider py-2 mr-3'>${(subTotal * 0.21).toFixed(2)}</h3>
                         </div>
                         <div className='flex flex-row justify-between mt-5'>
                             <h2 className='text-lg font-semibold tracking-wider py-2'>Grand Total:</h2>
-                            <h2 className='text-lg font-semibold tracking-wider py-2'>${subTotal * 1.21}</h2>
+                            <h2 className='text-lg font-semibold tracking-wider py-2'>${(subTotal * 1.21).toFixed(2)}</h2>
                         </div>
                     </div>
                 </div>

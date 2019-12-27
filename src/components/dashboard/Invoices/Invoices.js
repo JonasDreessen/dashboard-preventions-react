@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux'
 function Invoices(){
   // connecting the global redux state to the EmptyInvoice component
   const invoices = useSelector(state => state.invoiceAdder)
-  console.log(invoices, 'invoices jwz')
   // mapping over the array of all invoices and displaying all of those. 
   const allInvoices = invoices.map(invoice => {
     return(
@@ -46,7 +45,6 @@ function Invoices(){
     )
     
   })
-  console.log(allInvoices, 'all invoices')
     return(
         <div className='w-10/12 bg-gray-300 float-right min-h-screen'>
           <div className='w-10/12 fixed z-50'>

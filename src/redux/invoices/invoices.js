@@ -1,16 +1,13 @@
 // -- actions -- // 
-
 export const addNewInvoice = (payload) => {
     return {
         type: 'invoice',
         payload: payload
     }
 }
-
 // -- initial state -- // 
 const INITIAL_STATE = []
 // -- reducers -- // 
-
 const InvoiceAdder = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case 'invoice':
@@ -19,5 +16,4 @@ const InvoiceAdder = (state = INITIAL_STATE, action) => {
             return state
     }    
 }
-
 export default InvoiceAdder

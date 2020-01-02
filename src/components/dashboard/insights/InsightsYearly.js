@@ -2,7 +2,6 @@ import React from 'react'
 import {
     ComposedChart, Line, Bar, XAxis, YAxis, Tooltip, Cell, ResponsiveContainer
   } from 'recharts';
-
 function InsightsYearly (){ 
     const data = [
         {name: 'Hazard', amount: 22, pv:2400, amt:2400, label: 'Hazard'}, 
@@ -33,7 +32,6 @@ const renderBarChart =
       </ComposedChart>
     </ResponsiveContainer>
     );
-
     return(
         renderBarChart
     )

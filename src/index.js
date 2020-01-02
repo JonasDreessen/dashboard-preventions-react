@@ -13,15 +13,26 @@ import Settings from './components/dashboard/Settings/Settings';
 import Invoices from './components/dashboard/Invoices/Invoices'
 import InvoiceDetails from './components/dashboard/Invoices/InvoiceDetails'
 import EmptyInvoice from './components/dashboard/Invoices/emptyInvoice'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 import rootReducer from './redux/index'
 import {Provider} from 'react-redux'
-
-
+import {Helmet} from 'react-helmet'
+import Favicon from 'react-favicon'
+// to use the saga, you need to import it in to the index.js file. Same principal as the reducers, there must be a combineSaga's to clean the code up a little bit.
+// then the saga needs to be imported in to the sagamiddleware.run(here comes the saga action)
+// -- SAGA -- // 
+const sagaMiddleWare = createSagaMiddleware()
 // -- STORE -- // 
-const store = createStore(rootReducer) 
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleWare))
+// sagaMiddleWare.run()
+// -- App routing -- //
 const routing = (
     <Router>
+    <Favicon url='../images/pointbreak-favicon.png'/>
+        <Helmet>
+            <title>Prevention dashboard</title>
+        </Helmet>
         <div>
             <Route path='/' component={NavigationBar} />
             <Route exact path="/" component={App} />

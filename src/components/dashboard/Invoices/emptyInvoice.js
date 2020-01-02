@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DashboardHeader from '../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import {addNewInvoice} from '../../../redux/invoices/invoices'
-import {increment} from '../../../redux/InvoiceIdCreator/InvoiceIdCreator'
 import Select from "react-dropdown-select"
 
 function EmptyInvoice() {
-
     // connecting the global redux state to the EmptyInvoice component
     const invoiceID = useSelector(state => state.InvoiceIdCreator)
     const dispatch = useDispatch()
     // setting local state
     const [companyDetails, setCompanyDetails] = useState([
         {
-            invoiceID: '',
+            invoiceID: invoiceID,
             orderStatus:'' ,
             orderDate: '' ,
             billFrom: {
@@ -91,12 +89,7 @@ function EmptyInvoice() {
             )
         }
     })
-    // bill coming from
-    function invoiceIDChanger(event){
-        const companySlicedArray = companyDetails.slice()
-        companySlicedArray[0].invoiceID = event.target.value
-        setCompanyDetails(companySlicedArray)
-    }
+    
     function orderStatusChanger(value){
         const companySlicedArray = companyDetails.slice()
         companySlicedArray[0].orderStatus = value[0].value
@@ -192,15 +185,12 @@ function EmptyInvoice() {
                 <div className='flex flex-row justify-between border-b-2 border-dashed py-5'>
                     <div>
                         <p className='py-2 text-gray-600 font-semibold tracking-wider'>Create new invoice</p>
-                        <p className='py-2 text-blue-600 font-light tracking-wider outline-none appearance-none'>{invoiceID}</p>
-                        {/* <input onChange={event => invoiceIDChanger(event)} type='tel' placeholder='#newID' maxLength='18' className='py-2 text-blue-600 font-light tracking-wider outline-none appearance-none'></input> */}
+                        <p className='py-2 text-blue-600 font-light tracking-wider outline-none appearance-none'>#{invoiceID}</p>
                     </div>
                     <div>
                         <div className='flex flex-row items-center'>
-                            <p>
-                                <span className='py-2 font-semibold tracking-wider text-sm mr-2'>Order status:</span></p>
-                                <Select placeholder='select' options={status} onChange={(values) => orderStatusChanger(values) }/>
-                                {/* <input onChange={event => orderStatusChanger(event)} type='text' placeholder='enter status' className='py-2 tracking-wider text-sm text-gray-600 outline-none'></input> */}
+                            <p><span className='py-2 font-semibold tracking-wider text-sm mr-2'>Order status:</span></p>
+                            <Select placeholder='select' options={status} onChange={(values) => orderStatusChanger(values) }/>
                         </div>
                         <div className='flex flex-row items-center'>
                         <p>

@@ -2,7 +2,6 @@ import React from 'react'
 function InsightsPercentage() {
     return(
         <div className='flex flex-row flex-wrap justify-between'>
-
             <div className='px-5 rounded bg-white shadow-lg py-10 mb-4' style={{width:'48%'}}>
                 <h3 className='text-lg tracking-wider mb-4'>Daily incidents</h3>
                 <div className='mb-4 flex flex-row justify-between w-9/12'>

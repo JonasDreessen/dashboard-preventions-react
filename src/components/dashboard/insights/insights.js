@@ -48,5 +48,4 @@ function Insights() {
   </div>
   );
 }
-
 export default Insights;

@@ -5,9 +5,7 @@ export const increment = () => {
         type: 'increment'
     }
 }
-
 // -- reducer -- //
-
 const InvoiceIdCreator = (state = 0, action) => {
     switch(action.type){
         case 'increment':
@@ -16,5 +14,4 @@ const InvoiceIdCreator = (state = 0, action) => {
             return state 
     }
 }
-
 export default InvoiceIdCreator

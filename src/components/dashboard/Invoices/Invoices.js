@@ -1,10 +1,12 @@
 import React from 'react'
 import DashboardHeader from '../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {increment} from '../../../redux/InvoiceIdCreator/InvoiceIdCreator'
 function Invoices(){
   // connecting the global redux state to the EmptyInvoice component
   const invoices = useSelector(state => state.invoiceAdder)
+  const dispatch = useDispatch()
   // mapping over the array of all invoices and displaying all of those. 
   const allInvoices = invoices.map(invoice => {
     return(
@@ -43,7 +45,6 @@ function Invoices(){
         </ul>
       </div>
     )
-    
   })
     return(
         <div className='w-10/12 bg-gray-300 float-right min-h-screen'>
@@ -75,11 +76,13 @@ function Invoices(){
             </div>
             
            <Link className='ml-auto' to='/newinvoice'>
-              <img 
-              className='w-12 mr-16 hover:shadow-2xl rounded-full' 
-              style={{marginTop: -10}}  
-              src={require('../../../images/invoice-plus.png')} 
-              alt='add invoice'/>
+              <div onClick={() => dispatch(increment())} >
+                <img
+                className='w-12 mr-16 hover:shadow-2xl rounded-full' 
+                style={{marginTop: -10}}  
+                src={require('../../../images/invoice-plus.png')} 
+                alt='add invoice'/>
+              </div>
            </Link>
           </div>
         </div>

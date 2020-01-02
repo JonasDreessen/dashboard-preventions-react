@@ -27,8 +27,6 @@ function Incidents(){
       default:
         bgcolor = 'bg-white'
     }
-  
-
     return (
     <ul className='flex flex-row list-none min-w-full py-2 border-b border-gray-200' key={incident.id}>
       <li style={{width: '16.666%'}} className='text-sm'>{incident.first_name}</li>

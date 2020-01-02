@@ -42,7 +42,6 @@ export const SettingsFocus = () => {
     }
 }
 // -- reducers -- // 
-
 const NavigationReducer = (state = 'Insights', action) => {
     switch(action.type){
         case 'Insights':

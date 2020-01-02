@@ -31,7 +31,6 @@ const renderPieChart =
         </PieChart>
     </ResponsiveContainer>
     );
-
     return(
         renderPieChart
     )

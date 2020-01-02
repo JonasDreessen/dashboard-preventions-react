@@ -1,9 +1,9 @@
 import React from 'react'
 import DashboardHeader from '../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
+
 function InvoiceDetails(props){
     let invoiceInfo = props.location.state
-    console.log(invoiceInfo)
     // general invoice info
     const InvoiceID = invoiceInfo.InvoiceID
     const orderStatus = invoiceInfo.orderStatus
@@ -20,7 +20,6 @@ function InvoiceDetails(props){
     const BillToStreetName = invoiceInfo.BillToStreetName
     const BillToCity = invoiceInfo.BillToCity
     const BillToPhone = invoiceInfo.BillToPhone
-
     // invoice details
     const invoiceBuildingblocks = invoiceInfo.InvoiceDetails.map(detail => {
         return(
@@ -44,9 +43,8 @@ function InvoiceDetails(props){
             <DashboardHeader />
           </div>
           <div className='px-8 py-10 flex flex-wrap justify-between overflow-auto  mt-6'>
-
           {/* Below is the template for the invoice */}
-          <div className='px-5 pt-4 mt-10' style={{width: '100%'}}>
+          <div id='print-screen' className='px-5 pt-4 mt-10' style={{width: '100%'}}>
             <div className='float-right w-5/12 flex flex-row justify-between'>
                 <div className="flex flex-row items-center hover:bg-blue-300 p-1 px-2 rounded-lg cursor-pointer">
                     <img className='w-4 h-4 mr-2' src={require('../../../images/go-back.png')} alt='go back'/>
@@ -126,7 +124,6 @@ function InvoiceDetails(props){
                 </div>
             </div>
           </div>
-        
         </div>
     )
 }

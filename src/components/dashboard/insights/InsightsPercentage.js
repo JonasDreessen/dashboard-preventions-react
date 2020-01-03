@@ -13,7 +13,6 @@ function InsightsPercentage() {
                     <div className='py-1 rounded bg-red-600' style={{width: '44%'}}></div>
                 </div>
             </div>
-
             <div className='px-5 rounded bg-white shadow-lg py-10 mb-4' style={{width:'48%'}}>
                 <h3 className='text-lg tracking-wider mb-4'>Weekly incidents</h3>
                 <div className='mb-4 flex flex-row justify-between w-9/12'>
@@ -25,7 +24,6 @@ function InsightsPercentage() {
                     <div className='py-1 rounded bg-green-400' style={{width: '65%'}}></div>
                 </div>
             </div>
-
             <div className='px-5 rounded bg-white shadow-lg py-10' style={{width:'48%'}}>
                 <h3 className='text-lg tracking-wider mb-4'>Monthly incidents</h3>
                 <div className='mb-4 flex flex-row justify-between w-9/12'>
@@ -37,7 +35,6 @@ function InsightsPercentage() {
                     <div className='py-1 rounded bg-green-400' style={{width: '73%'}}></div>
                 </div>
             </div>
-
             <div className='px-5 rounded bg-white shadow-lg py-10' style={{width:'48%'}}>
                 <h3 className='text-lg tracking-wider mb-4'>Average severity</h3>
                 <div className='mb-4 flex flex-row justify-between w-9/12'>
@@ -49,7 +46,6 @@ function InsightsPercentage() {
                     <div className='py-1 rounded bg-orange-400' style={{width: '32%'}}></div>
                 </div>
             </div>
-
         </div>
     )
 }

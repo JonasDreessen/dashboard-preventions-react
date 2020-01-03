@@ -28,5 +28,4 @@ function NavigationBarColor (){
         </label>
     )
 }
-// testing the sagas for the sake of it, makes no sense at all because data is syncornous aka local x 
 export default NavigationBarColor

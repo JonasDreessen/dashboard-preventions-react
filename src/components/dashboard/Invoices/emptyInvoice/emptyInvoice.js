@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import DashboardHeader from '../dashboardHeader/dashboardHeader'
+import DashboardHeader from '../../dashboardHeader/dashboardHeader'
 import { Link } from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
-import {addNewInvoice} from '../../../redux/invoices/invoices'
+import {addNewInvoice} from '../../../../redux/invoices/invoices'
 import Select from "react-dropdown-select"
 
 function EmptyInvoice() {
@@ -33,7 +33,6 @@ function EmptyInvoice() {
     const [invoiceRows, setInvoiceRows] = useState([0])
     const [invoiceDetails, setInvoiceDetails] = useState([])
     let payload = {invoiceDetails: invoiceDetails, companyDetails: companyDetails}
-    
     // function to ensure that every row is a unique number
     function customNumberGenerator(){
         setuniqueID(uniqueID + 1)
@@ -45,7 +44,6 @@ function EmptyInvoice() {
         invoiceDetails.forEach(element => {
             subTotal += element.price
         })};
-    
     // create new invoice section for every new id created
     const allInvoiceRows = invoiceRows.map(row => {
         if(row === 0){
@@ -151,7 +149,6 @@ function EmptyInvoice() {
         companySlicedArray[0].billTo.phone = event.target.value
         setCompanyDetails(companySlicedArray)
     }
-
     const status = [
         {label: 'not sended', value: 'not send'},
         {label: 'pending', value: 'pending'},
@@ -163,20 +160,18 @@ function EmptyInvoice() {
             <DashboardHeader />
           </div>
           <div className='px-8 py-10 flex flex-wrap justify-between overflow-auto  mt-6'>
-
-          {/* Below is the template for the invoice */}
           <div className='px-5 pt-4 mt-10' style={{width: '100%'}}>
             <div className='float-right w-5/12 flex flex-row justify-between'>
                 <div className="flex flex-row items-center hover:bg-blue-300 p-1 px-2 rounded-lg cursor-pointer">
-                    <img className='w-4 h-4 mr-2' src={require('../../../images/go-back.png')} alt='go back'/>
+                    <img className='w-4 h-4 mr-2' src={require('../../../../images/go-back.png')} alt='go back'/>
                     <Link to='/Invoices'><h3 className='text-blue-700 text-sm tracking-wider'>GO TO INVOICES</h3></Link>
                 </div>
                 <div className="flex flex-row items-center hover:bg-red-300 p-1 px-2 rounded-lg cursor-pointer">
-                    <img className='w-4 h-4 mr-2' src={require('../../../images/pencil-edit-button.png')} alt='eddit button'/>
+                    <img className='w-4 h-4 mr-2' src={require('../../../../images/pencil-edit-button.png')} alt='eddit button'/>
                     <h3 className='text-red-700 text-sm tracking-wider'>EDIT INVOICES</h3>
                 </div>
                 <div className="flex flex-row items-center bg-blue-600 p-1 px-2 rounded-lg cursor-pointer">
-                    <img className='w-4 h-4 mr-2' src={require('../../../images/printing-tool.png')} alt='go back'/>
+                    <img className='w-4 h-4 mr-2' src={require('../../../../images/printing-tool.png')} alt='go back'/>
                    <Link to='/invoices'> <h3 className='text-white font-semibold text-sm tracking-wider' onClick={() => dispatch(addNewInvoice(payload))}>ADD INVOICE TO LIST (FINAL!)</h3> </Link>
                 </div>
             </div>
@@ -256,10 +251,8 @@ function EmptyInvoice() {
                         </div>
                     </div>
                 </div>
-                
             </div>
           </div>
-        
         </div>
     )
 }

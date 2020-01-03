@@ -20,7 +20,6 @@ function Insights() {
               </div>
             </div>
         </div>
-
         <div className='px-5 pt-4 mt-10 bg-white rounded shadow-lg' style={{width: '48%'}}>
             <div>
               <h3 className='text-lg tracking-wider mb-4'>Statics</h3>
@@ -29,11 +28,9 @@ function Insights() {
               </div>
             </div>
         </div>
-
         <div className='mt-10' style={{width: '48%'}}>
           <InsightsPercentage />
         </div>
-
         <div className='px-5 pt-4 mt-10 bg-white rounded shadow-lg' style={{width: '48%'}}>
             <div>
               <h3 className='text-lg tracking-wider mb-4'>Visitors</h3>
@@ -42,7 +39,6 @@ function Insights() {
               </div>
             </div>
         </div>
-
       </div>
     </div>
   </div>

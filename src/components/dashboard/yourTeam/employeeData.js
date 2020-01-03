@@ -1,7 +1,5 @@
 import React from 'react'
-
 function EmployeeData (){
-    // 
     return(
     <div style={{height:400}} className='mb-10 pb-10'>
         <h1 className='mb-2'>Employees Data</h1>

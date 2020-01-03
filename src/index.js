@@ -12,7 +12,7 @@ import HelpAndSupport from './components/dashboard/HelpAndSupport/HelpAndSupport
 import Settings from './components/dashboard/Settings/Settings';
 import Invoices from './components/dashboard/Invoices/Invoices'
 import InvoiceDetails from './components/dashboard/Invoices/InvoiceDetails'
-import EmptyInvoice from './components/dashboard/Invoices/emptyInvoice'
+import EmptyInvoice from './components/dashboard/Invoices/emptyInvoice/emptyInvoice'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from './redux/index'

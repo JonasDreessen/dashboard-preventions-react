@@ -25,7 +25,6 @@ function MembersAdded (){
                 </BarChart>
             </div>
         </div>
-
         <div className='px-5 pt-4 bg-white rounded shadow-lg'>
         <div className='flex flex-row items-center'>
                 <h1>Team members left</h1>

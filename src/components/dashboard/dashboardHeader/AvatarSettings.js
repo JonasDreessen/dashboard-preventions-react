@@ -6,13 +6,14 @@ function AvatarSettings() {
     const popUpState = useSelector(state => state.AvatarPopUpSwitcher)
     const sex = useSelector(state => state.ChangeAvatarSex)
     const dispatch = useDispatch()
+    
     const handleClick = (e) => {
         if(popUpState){
             dispatch(AvatarClose())
         }
     }
     const avatar = sex.male ? 'user.png' : 'girl.png'
-    const name = sex.male ? 'Jonas Dreessen' : 'Valerie Demeester'
+    const name = sex.male ? 'John Smith' : 'Marie McCan'
     const job = sex.male ? 'Marketing Officer' : 'Head HR'
     document.addEventListener("mousedown", handleClick);
     const node = useRef()
